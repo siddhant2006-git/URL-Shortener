@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/input";
-import { Spotlight } from "@/components/ui/spotlight-new";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiLink } from "react-icons/fi";
@@ -24,29 +23,28 @@ const LandingPage = () => {
 
   return (
     <div className="flex flex-col items-center px-4 sm:px-8 lg:px-16 xl:px-32 max-w-screen-xl mx-auto">
-      <Spotlight />
-
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold text-white py-6 text-center">
+      <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white py-6 text-center leading-tight">
         Shorten. Share. Track.
       </h1>
 
-      <h2 className="text-sm sm:text-base md:text-lg text-white text-center mb-12">
-        Create short links, QR codes, and analyze your traffic.
+      <h2 className="text-sm sm:text-base md:text-lg text-gray-300 text-center mb-10 sm:mb-12 px-4 max-w-md sm:max-w-2xl">
+        Create short links, QR codes, and analyze your traffic — all in one
+        place.
       </h2>
 
       <form
         onSubmit={handleShorten}
-        className="w-full flex flex-col sm:flex-row gap-3 items-center justify-center mb-10 max-w-3xl"
+        className="w-full flex flex-col sm:flex-row gap-3 items-center justify-center mb-12 sm:mb-16 max-w-3xl px-2"
       >
         <Input
           type="url"
           value={longUrl}
           placeholder="Enter your longggggggggggggg URL"
           onChange={(e) => setLongUrl(e.target.value)}
-          className="w-full sm:flex-1 py-3 px-4 bg-transparent text-sm sm:text-base"
+          className="w-full sm:flex-1 py-3 px-4 bg-transparent text-sm sm:text-base border border-gray-600"
         />
         <Button
-          className="w-full sm:w-auto h-12 sm:h-full bg-white text-black"
+          className="w-full sm:w-auto h-10 bg-blue-50 text-black font-semibold"
           type="submit"
           variant="destructive"
         >
@@ -55,41 +53,42 @@ const LandingPage = () => {
       </form>
 
       {/* Cards Section */}
-      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-6 justify-center items-center mb-20 sm:mb-36">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center items-stretch mb-16 px-2 w-full max-w-6xl">
         {[
           {
-            icon: <FiLink size={44} />,
+            icon: <FiLink size={36} />,
             title: "Shorten URLs",
             text: "Create short.\nmemorable links",
           },
           {
-            icon: <BiQr size={44} />,
+            icon: <BiQr size={36} />,
             title: "Generate QR Codes",
             text: "Turn your links into\nscannable QR codes",
           },
           {
-            icon: <MdBarChart size={44} />,
+            icon: <MdBarChart size={36} />,
             title: "Track Clicks",
             text: "Monitor the performance\nof your links",
           },
         ].map(({ icon, title, text }, idx) => (
           <div
             key={idx}
-            className="border border-[#282c34] bg-[#13181f] rounded-xl p-6 sm:p-8 w-full sm:w-72 flex flex-col items-center text-center max-w-sm"
+            className="border border-[#282c34] bg-[#13181f] rounded-xl p-5 flex flex-col items-center text-center"
           >
-            <div className="text-white mb-4 sm:mb-6">{icon}</div>
-            <h3 className="text-white font-semibold text-xl mb-2">{title}</h3>
-            <p className="text-gray-400 text-base leading-relaxed whitespace-pre-line">
-              {text}
-            </p>
+            <div className="text-white mb-3">{icon}</div>
+            <h3 className="text-white font-semibold text-lg mb-1">{title}</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">{text}</p>
           </div>
         ))}
       </div>
 
       {/* FAQ Section */}
-      <h2 className="text-white text-2xl sm:text-3xl w-full text-left mb-4 sm:mb-6 px-2 sm:px-4">
-        FAQ&apos;s
-      </h2>
+
+      <div className="w-full">
+        <h2 className="text-white text-xl sm:text-2xl font-semibold mb-4 ml-4">
+          FAQ&apos;s
+        </h2>
+      </div>
 
       <Accordion
         type="multiple"

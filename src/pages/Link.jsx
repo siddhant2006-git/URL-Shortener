@@ -70,7 +70,15 @@ const Link = () => {
       {(loading || loadingStats) && (
         <BarLoader className="mb-4" width="100%" color="#36d7b7" />
       )}
-      Link Details
+      {/* Title and Created At */}
+      <div className="space-y-1 mb-4">
+        <h1 className="text-2xl sm:text-3xl font-semibold break-words">
+          {url?.title}
+        </h1>
+        <span className="text-sm text-gray-500">
+          {new Date(url?.created_at).toLocaleString()}
+        </span>
+      </div>
       <div className="grid grid-cols-1 gap-4">
         <div className="bg-[#1a1d24] border border-[#1f1f22] p-6 rounded-xl text-white grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Side: Short + Original URLs */}
@@ -145,34 +153,6 @@ const Link = () => {
             </div>
           </div>
         </div>
-
-        {stats && stats.length > 0 && (
-          <div className="bg-[#1a1d24] border border-[#1f1f22]  p-6 rounded-xl shadow-sm text-white grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Left Side: Stats & Info */}
-            <div className="flex flex-col justify-between gap-6">
-              {/* Total Clicks */}
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm text-gray-400">Total Clicks</h3>
-                <p className="text-3xl font-bold">{stats.length}</p>
-              </div>
-
-              {/* Title and Created At */}
-              <div className="space-y-1">
-                <h1 className="text-2xl sm:text-3xl font-semibold break-words">
-                  {url?.title}
-                </h1>
-                <span className="text-sm text-gray-500">
-                  {new Date(url?.created_at).toLocaleString()}
-                </span>
-              </div>
-            </div>
-
-            {/* Right Side: QR Code + Buttons */}
-            <div className="flex flex-col items-center gap-4">
-              {/* Buttons Under QR */}
-            </div>
-          </div>
-        )}
       </div>
       <div className="max-w-9xl mx-auto py-4">
         <Card className="bg-[#1a1d24] border border-[#1f1f22] rounded-xl shadow-sm">
@@ -192,9 +172,7 @@ const Link = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-2xl font-bold">
-                    {stats.length}
-                  </p>
+                  <p className="text-2xl font-bold">{stats.length}</p>
                 </CardContent>
               </Card>
 
