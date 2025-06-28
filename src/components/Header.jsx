@@ -17,18 +17,24 @@ import { BarLoader } from "react-spinners";
 
 const Header = () => {
   const navigate = useNavigate();
-
   const { loading, fn: fnLogout } = useFetch(logout);
-
   const { user, fetchUser } = UrlState();
+
+  const handleLogout = async () => {
+    await fnLogout();
+    fetchUser();
+    navigate("/auth");
+  };
 
   return (
     <>
-      <nav className="py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <Link to="/">
+      <nav className="py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full bg-transparent z-50">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
           <img src="/logo.png" className="h-12 sm:h-14 lg:h-16" alt="Trimmer Logo" />
         </Link>
 
+        {/* Right Side */}
         <div>
           {!user ? (
             <Button
@@ -39,50 +45,52 @@ const Header = () => {
             </Button>
           ) : (
             <DropdownMenu>
-              <DropdownMenuTrigger className="w-10 sm:w-10 rounded-full overflow-hidden">
+              <DropdownMenuTrigger className="w-10 rounded-full overflow-hidden">
                 <Avatar>
                   <AvatarImage
                     className="object-cover"
                     src={user?.user_metadata?.profile_pic}
                   />
-                  <AvatarFallback>You</AvatarFallback>
+                  <AvatarFallback>U</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="bg-gray-950 text-sm sm:text-base">
+              <DropdownMenuContent className="bg-[#11141b] border border-[#2a2d33]  text-sm sm:text-base">
                 <DropdownMenuLabel>
                   {user?.user_metadata?.name}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Link to="/dashboard" className="flex">
+
+                {/* My Links */}
+                <DropdownMenuItem asChild>
+                  <Link to="/dashboard" className="flex items-center">
                     <LinkIcon className="mr-2 h-4 w-4" />
                     My Links
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="text-red-400">
+
+                {/* Logout */}
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="text-red-400 cursor-pointer flex items-center"
+                >
                   <LogOut className="mr-2 h-4 w-4" />
-                  <span
-                    onClick={() => {
-                      fnLogout().then(() => {
-                        fetchUser();
-                        navigate("/auth");
-                      });
-                    }}
-                  >
-                    Logout
-                  </span>
+                  Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           )}
         </div>
       </nav>
-      {loading && <BarLoader className="mb-4 w-full" color="#00eeff" />}
+
+      {/* Optional loading bar */}
+      {loading && (
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <BarLoader className="w-full" color="#00eeff" />
+        </div>
+      )}
     </>
   );
 };
 
 export default Header;
-
-// some changes in css for make it more responsive for all devices

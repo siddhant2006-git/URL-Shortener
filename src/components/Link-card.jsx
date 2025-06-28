@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { Copy, Download, LinkIcon, Trash } from "lucide-react";
+import { Copy, Download, Trash } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import useFetch from "@/hooks/Use-fetch";
 import { deleteUrl } from "@/db/apiUrls";
@@ -104,29 +104,47 @@ const LinkCard = ({ url, fetchUrls }) => {
         </div>
       </div>
       <div className="block lg:hidden">
-        <div className="flex flex-col md:flex-row gap-5 p-4 bg-[#1a1d24] border border-[#1f1f22]  rounded-lg">
-          <img
-            src={url?.qr}
-            className="h-28 w-28 object-contain mx-auto sm:mx-0"
-            alt="qr code"
-          />
-          <Link to={`/link/${url?.id}`} className="flex flex-col flex-1">
-            <span className="text-lg md:text-2xl font-semibold whitespace-nowrap">
-              {url?.title}
+        <div className="flex flex-col md:flex-row gap-5 p-4 bg-[#1a1d24] border border-[#1f1f22] rounded-lg">
+          {/* QR Image aligned to start */}
+          <div className="flex justify-start items-start">
+            <img
+              src={url?.qr}
+              className="h-28 w-28 object-contain"
+              alt="QR code"
+            />
+          </div>
+
+          {/* URL Details */}
+          <div className="flex flex-col flex-1">
+            <Link
+              to={`/link/${url?.id}`}
+              className="text-lg md:text-2xl font-semibold whitespace-nowrap hover:underline"
+            >
+              {url?.title || "Untitled"}
+            </Link>
+
+            <span className="text-blue-300 break-words">
+              https://trimrr.in/{url?.custom_url || url?.short_url}
             </span>
-            <span className="whitespace-nowrap text-blue-300  break-all">
-              https://trimrr.in/
-              {url?.custom_url ? url?.custom_url : url.short_url}
+
+            <a
+              href={url?.original_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 hover:underline text-sm mt-1 break-words"
+            >
+              <span className="break-all">{url?.original_url}</span>
+            </a>
+
+            <span className="mt-2 text-sm text-gray-400">
+              {url?.created_at
+                ? new Date(url.created_at).toLocaleString()
+                : "N/A"}
             </span>
-            <span className="flex items-center gap-1 hover:underline cursor-pointer">
-              <LinkIcon className="p-1" />
-              {url?.original_url}
-            </span>
-            <span className="flex items-end font-extralight text-sm flex-1">
-              {new Date(url?.created_at).toLocaleString()}
-            </span>
-          </Link>
-          <div className="flex gap-2">
+          </div>
+
+          {/* Actions */}
+          <div className="flex gap-2 items-start">
             <Button
               variant="ghost"
               onClick={() =>
@@ -137,13 +155,15 @@ const LinkCard = ({ url, fetchUrls }) => {
             >
               <Copy />
             </Button>
-            <Button variant="ghost" onClick={downloadImage}>
+
+            <Button variant="ghost" onClick={() => downloadImage(url?.qr)}>
               <Download />
             </Button>
+
             <Button
               variant="ghost"
               onClick={() => fnDelete().then(() => fetchUrls())}
-              disable={loadingDelete}
+              disabled={loadingDelete}
             >
               {loadingDelete ? (
                 <BeatLoader size={5} color="white" />
