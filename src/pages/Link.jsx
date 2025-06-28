@@ -4,14 +4,13 @@ import { UrlState } from "../Context.jsx";
 import { getClicksForUrl } from "@/db/apiClicks";
 import { deleteUrl, getUrl } from "@/db/apiUrls";
 import useFetch from "@/hooks/Use-fetch";
-import {  Download, LinkIcon, Trash } from "lucide-react";
+import { Download, LinkIcon, Trash } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BarLoader, BeatLoader } from "react-spinners";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import LocationStats from "@/components/Location-stats";
 import Device from "@/components/Device-stats";
-
 
 const Link = () => {
   const locationOrigin =
@@ -71,92 +70,152 @@ const Link = () => {
       {(loading || loadingStats) && (
         <BarLoader className="mb-4" width="100%" color="#36d7b7" />
       )}
+      Link Details
+      <div className="grid grid-cols-1 gap-4">
+        <div className="bg-[#1a1d24] border border-[#1f1f22] p-6 rounded-xl text-white grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Side: Short + Original URLs */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+            {/* Short URL Box */}
+            <div className="bg-[#11141b] p-5 rounded-lg border border-[#2a2d33] shadow-sm">
+              <h3 className="text-sm text-gray-400 mb-2">Short URL</h3>
+              <a
+                href={`${locationOrigin}/${url?.custom_url}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xl sm:text-2xl font-semibold  break-all transition-all"
+              >
+                {`${locationOrigin}/${link}`}
+              </a>
+            </div>
 
-      <div className="flex flex-col lg:flex-row gap-8 justify-between">
-        <div className="flex flex-col items-start gap-6 lg:w-2/5">
-          <h1 className="text-3xl sm:text-5xl font-extrabold hover:underline cursor-pointer break-words">
-            {url?.title}
-          </h1>
-
-          <a
-            href={`${locationOrigin}/${url?.custom_url}`}
-            target="_blank"
-            className="text-lg sm:text-2xl md:text-xl text-blue-500 font-bold hover:underline break-all"
-          >
-            {`${locationOrigin}/${link}`}
-          </a>
-
-          <a
-            className="flex items-center gap-1 text-blue-400 hover:underline cursor-pointer"
-            href={url?.original_url}
-            target="_blank"
-          >
-            <LinkIcon />
-            {url?.original_url}
-          </a>
-
-          <span className="font-light text-sm text-gray-500">
-            {new Date(url?.created_at).toLocaleString()}
-          </span>
-
-           <div className="flex gap-2 mt-6">
-
-           
-            <Button onClick={downloadImage}>
-              <Download />
-            </Button>
-
-            <Button
-              variant="ghost"
-              onClick={() =>
-                fnDelete().then(() => {
-                  navigate("/dashboard");
-                })
-              }
-              disabled={loadingDelete}
-            >
-              {loadingDelete ? (
-                <BeatLoader size={5} color="white" />
-              ) : (
-                <Trash />
-              )}
-            </Button>
-          </div>
+            {/* Original URL Box */}
+            <div className="bg-[#11141b] p-5 rounded-lg border border-[#2a2d33] shadow-sm">
+              <h3 className="text-sm text-gray-400 mb-2">Original URL</h3>
+              <a
+                href={url?.original_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 text-white  break-words"
+              >
+                <LinkIcon className="w-4 h-4 mt-1 text-gray-400" />
+                <span className="break-all">{url?.original_url}</span>
+              </a>
+            </div>
           </div>
 
-          <img
-            src={url?.qr}
-            className="w-full lg:w-auto max-w-xs mt-6 ring ring-blue-500 p-1 rounded object-contain"
-            alt="qr code"
-          />
+          {/* Right Side: QR Code */}
+          <div className="flex flex-col items-center justify-center gap-3">
+            <img
+              src={url?.qr}
+              alt="QR Code"
+              className="w-full max-w-[220px] rounded-md p-2 object-contain"
+            />
+            <span className="text-xs text-gray-400">
+              Scan this QR to access
+            </span>
+
+            <div className="flex gap-3">
+              <Button
+                onClick={downloadImage}
+                className="bg-[#1a1d24] border border-[#1f1f22] text-white flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </Button>
+
+              <Button
+                variant="ghost"
+                onClick={() =>
+                  fnDelete().then(() => {
+                    navigate("/dashboard");
+                  })
+                }
+                disabled={loadingDelete}
+                className="bg-[#1a1d24] border border-[#1f1f22] flex items-center gap-2"
+              >
+                {loadingDelete ? (
+                  <BeatLoader size={6} color="#f87171" />
+                ) : (
+                  <>
+                    <Trash className="w-4 h-4" />
+                    Delete
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
         </div>
 
-        <Card className="lg:w-3/5 ">
+        {stats && stats.length > 0 && (
+          <div className="bg-[#1a1d24] border border-[#1f1f22]  p-6 rounded-xl shadow-sm text-white grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Left Side: Stats & Info */}
+            <div className="flex flex-col justify-between gap-6">
+              {/* Total Clicks */}
+              <div className="flex flex-col gap-1">
+                <h3 className="text-sm text-gray-400">Total Clicks</h3>
+                <p className="text-3xl font-bold">{stats.length}</p>
+              </div>
+
+              {/* Title and Created At */}
+              <div className="space-y-1">
+                <h1 className="text-2xl sm:text-3xl font-semibold break-words">
+                  {url?.title}
+                </h1>
+                <span className="text-sm text-gray-500">
+                  {new Date(url?.created_at).toLocaleString()}
+                </span>
+              </div>
+            </div>
+
+            {/* Right Side: QR Code + Buttons */}
+            <div className="flex flex-col items-center gap-4">
+              {/* Buttons Under QR */}
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="max-w-9xl mx-auto py-4">
+        <Card className="bg-[#1a1d24] border border-[#1f1f22] rounded-xl shadow-sm">
           <CardHeader>
-            <CardTitle className="text-3xl sm:text-4xl font-extrabold">
+            <CardTitle className="text-3xl sm:text-4xl font-semibold text-white">
               Stats
             </CardTitle>
           </CardHeader>
 
-          {stats && stats?.length ? (
-            <CardContent className="flex flex-col gap-6">
-              <Card>
+          {stats && stats.length > 0 ? (
+            <CardContent className="flex flex-col gap-6 text-white">
+              {/* Total Clicks */}
+              <Card className="bg-[#11141b] border border-[#2a2d33]">
                 <CardHeader>
-                  <CardTitle>Total Clicks</CardTitle>
+                  <CardTitle className="text-lg text-gray-400">
+                    Total Clicks
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-xl font-semibold">{stats?.length}</p>
+                  <p className="text-2xl font-bold">
+                    {stats.length}
+                  </p>
                 </CardContent>
               </Card>
 
-              <CardTitle>Location Data</CardTitle>
-              <LocationStats stats={stats} />
-
-              <CardTitle>Device Info</CardTitle>
-              <Device stats={stats} />
+              {/* Charts Side-by-Side */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                  <CardTitle className="text-lg text-gray-400 mb-2">
+                    Location Data
+                  </CardTitle>
+                  <LocationStats stats={stats} />
+                </div>
+                <div>
+                  <CardTitle className="text-lg text-gray-400 mb-2">
+                    Device Info
+                  </CardTitle>
+                  <Device stats={stats} />
+                </div>
+              </div>
             </CardContent>
           ) : (
-            <CardContent>
+            <CardContent className="text-gray-400">
               {loadingStats === false
                 ? "No statistics yet"
                 : "Loading Statistics..."}
@@ -164,6 +223,7 @@ const Link = () => {
           )}
         </Card>
       </div>
+    </div>
   );
 };
 

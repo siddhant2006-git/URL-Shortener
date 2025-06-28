@@ -77,7 +77,16 @@
 
 @layer base{
   :root{
-    background-color: rgb(0,3,25);
+    background-color: #13181f;
     color: white;
   }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
 }
