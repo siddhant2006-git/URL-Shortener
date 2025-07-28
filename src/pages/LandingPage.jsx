@@ -39,7 +39,7 @@ const LandingPage = () => {
         <Input
           type="url"
           value={longUrl}
-          placeholder="Enter your longggggggggggggg URL"
+          placeholder="Enter your long URL"
           onChange={(e) => setLongUrl(e.target.value)}
           className="w-full sm:flex-1 py-3 px-4 bg-transparent text-sm sm:text-base border border-gray-600"
         />

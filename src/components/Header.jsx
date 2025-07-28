@@ -27,11 +27,15 @@ const Header = () => {
   };
 
   return (
-    <>
-      <nav className="py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full bg-transparent z-50">
+    <div className="w-full">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src="/logo.png" className="h-12 sm:h-14 lg:h-16" alt="Trimmer Logo" />
+          <img
+            src="/img1.png"
+            className="h-14 sm:h-16 lg:h-18"
+            alt="Trimmer Logo"
+          />
         </Link>
 
         {/* Right Side */}
@@ -46,7 +50,7 @@ const Header = () => {
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger className="w-10 rounded-full overflow-hidden">
-                <Avatar>
+                <Avatar className="h-10 w-10">
                   <AvatarImage
                     className="object-cover"
                     src={user?.user_metadata?.profile_pic}
@@ -85,11 +89,11 @@ const Header = () => {
 
       {/* Optional loading bar */}
       {loading && (
-        <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <BarLoader className="w-full" color="#00eeff" />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

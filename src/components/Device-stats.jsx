@@ -33,7 +33,9 @@ export default function Device({ stats }) {
 
   return (
     <div className="w-full max-w-xl mx-auto bg-[#11141b] border border-[#2a2d33] p-6 rounded-xl shadow-sm text-white">
-      <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">Device Usage</h2>
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">
+        Device Usage
+      </h2>
 
       {hasData ? (
         <div className="w-full h-[300px]">
@@ -76,7 +78,9 @@ export default function Device({ stats }) {
           </ResponsiveContainer>
         </div>
       ) : (
-        <p className="text-center text-gray-400 text-sm">No device data available.</p>
+        <p className="text-center text-gray-400 text-sm">
+          No device data available.
+        </p>
       )}
     </div>
   );

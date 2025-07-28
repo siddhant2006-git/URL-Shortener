@@ -21,12 +21,10 @@ import { QRCode } from "react-qrcode-logo";
 import { CreateUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
-
 const CreateLink = () => {
+  const locationOrigin =
+    typeof window !== "undefined" ? window.location.hostname : "";
 
-  const locationOrigin = typeof window !== "undefined" ? window.location.hostname : "";
-
-  
   const { user } = UrlState();
   const navigate = useNavigate();
 
@@ -155,8 +153,7 @@ const CreateLink = () => {
           placeholder="Enter your long URL"
         />
 
-         {errors.longUrl && <Error message={errors.longUrl} />}
-
+        {errors.longUrl && <Error message={errors.longUrl} />}
 
         <div className="flex items-center gap-2 mb-3">
           <Card className="p-2">{locationOrigin}</Card>/

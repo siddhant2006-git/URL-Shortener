@@ -98,7 +98,7 @@ const Dashboard = () => {
               placeholder="Filter links"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-[#13181f] border border-[#282c34] rounded-xl w-full pl-4 pr-12 py-2 sm:py-3 text-sm sm:text-base"
+              className="bg-[#13181f] border border-[#282c34] w-full pl-4 pr-12 py-2 sm:py-3 text-sm sm:text-base  focus:border-gray-400 focus:ring-blue-500 focus:outline-none rounded-md px-4 text-white"
             />
             <Filter className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500" />
           </div>

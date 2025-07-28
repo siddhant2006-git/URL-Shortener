@@ -112,7 +112,7 @@ const Link = () => {
           </div>
 
           {/* Right Side: QR Code */}
-          <div className="flex flex-col items-center justify-center gap-3">
+          <div className="flex flex-col items-start justify-center gap-3">
             <img
               src={url?.qr}
               alt="QR Code"

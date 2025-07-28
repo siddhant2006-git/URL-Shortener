@@ -109,7 +109,10 @@ const Login = () => {
       </CardContent>
 
       <CardFooter className="flex justify-center">
-        <Button className="border-2 w-full sm:w-auto truncate" onClick={handleLogin}>
+        <Button
+          className="border-2 w-full sm:w-auto truncate"
+          onClick={handleLogin}
+        >
           {loading ? <BeatLoader size={10} color="#00eeff" /> : "Login"}
         </Button>
       </CardFooter>

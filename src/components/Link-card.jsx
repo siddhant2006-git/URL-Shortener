@@ -27,7 +27,7 @@ const LinkCard = ({ url, fetchUrls }) => {
   return (
     <>
       <div className="hidden lg:block">
-        <div className="w-full px-4 sm:px-6 lg:px-8 mt-10">
+        <div className="w-full max-w-[1600px] mt-10 mx-auto">
           <div className="overflow-x-auto  bg-[#1a1d24] border border-[#1f1f22] rounded-xl hide-scrollbar">
             <table className="min-w-full text-left text-sm text-white">
               <thead className="text-gray-400 border-b border-gray-700 hidden sm:table-header-group">
@@ -35,30 +35,23 @@ const LinkCard = ({ url, fetchUrls }) => {
                   <th className="px-6 py-4">Title</th>
                   <th className="px-6 py-4">Original URL</th>
                   <th className="px-6 py-4">Short URL</th>
-                  <th className="px-6 py-4">Date Created</th>
                   <th className="px-6 py-4">QR Code</th>
                 </tr>
               </thead>
 
               <tbody className="divide-y divide-gray-800 ">
-                <tr className="flex flex-col sm:table-row">
-                  <td className="text-lg md:text-2xl font-semibold mb-2 md:mb-4 px-6 py-4 whitespace-nowrap">
+                <tr>
+                  <td className="px-6 py-4 text-lg md:text-2xl font-semibold whitespace-nowrap">
                     <Link to={`/link/${url?.id}`}>{url?.title}</Link>
                   </td>
 
-                  <td className="px-6  py-4 whitespace-nowrap text-blue-300 cursor-pointer break-all">
+                  <td className="px-6 py-4 whitespace-nowrap text-blue-300 text-base cursor-pointer break-all">
                     <Link to={`/link/${url?.id}`}>{url?.original_url}</Link>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-blue-300  break-all">
+                  <td className="px-6 py-4 whitespace-nowrap text-blue-300 text-base break-all">
                     <Link to={`/link/${url?.id}`}>
                       {`${locationOrigin}/${url?.custom_url || url?.short_url}`}
-                    </Link>
-                  </td>
-
-                  <td className="px-6 py-4 whitespace-nowrap text-gray-300 cursor-pointer">
-                    <Link to={`/link/${url?.id}`}>
-                      {new Date(url?.created_at).toLocaleString()}
                     </Link>
                   </td>
 
@@ -72,34 +65,53 @@ const LinkCard = ({ url, fetchUrls }) => {
                     </Link>
                   </td>
                 </tr>
+
+                {/* Action Row + Date */}
+                <tr>
+                  <td colSpan="4" className="pt-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+                        <Button
+                          onClick={() =>
+                            navigator.clipboard.writeText(
+                              `${locationOrigin}/${
+                                url?.custom_url || url?.short_url
+                              }`
+                            )
+                          }
+                        >
+                          <Copy className="h-4 w-4" />
+                        </Button>
+
+                        <Button onClick={downloadImage}>
+                          <Download className="h-4 w-4" />
+                        </Button>
+
+                        <Button
+                          variant="ghost"
+                          onClick={() => fnDelete().then(() => fetchUrls())}
+                        >
+                          {loadingDelete ? (
+                            <BeatLoader size={5} color="white" />
+                          ) : (
+                            <Trash className="h-4 w-4" />
+                          )}
+                        </Button>
+                      </div>
+
+                      <div className="text-gray-300 text-sm  mb-4 px-6 py-4 whitespace-nowrap  cursor-pointer">
+                        <span className="text-sm font-medium text-gray-400 mr-2">
+                          Date Created:
+                        </span>
+                        <Link to={`/link/${url?.id}`}>
+                          {new Date(url?.created_at).toLocaleString()}
+                        </Link>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
-            <div className="flex flex-wrap gap-3 items-center justify-center sm:justify-start ml-4 mb-4">
-              <Button
-                onClick={() =>
-                  navigator.clipboard.writeText(
-                    `${locationOrigin}/${url?.custom_url || url?.short_url}`
-                  )
-                }
-              >
-                <Copy className="h-4 w-4" />
-              </Button>
-
-              <Button onClick={downloadImage}>
-                <Download className="h-4 w-4" />
-              </Button>
-
-              <Button
-                variant="ghost"
-                onClick={() => fnDelete().then(() => fetchUrls())}
-              >
-                {loadingDelete ? (
-                  <BeatLoader size={5} color="white" />
-                ) : (
-                  <Trash className="h-4 w-4" />
-                )}
-              </Button>
-            </div>
           </div>
         </div>
       </div>

@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
-    <div>
-      <main className="min-h-screen container">
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <Header />
         {/* Body */}
         <Outlet />
