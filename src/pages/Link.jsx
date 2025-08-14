@@ -66,12 +66,13 @@ const Link = () => {
   }
 
   return (
-    <div className="p-4 lg:p-8">
+    <div className="p-4 lg:p-8 bg-white text-black">
       {(loading || loadingStats) && (
         <BarLoader className="mb-4" width="100%" color="#36d7b7" />
       )}
+
       {/* Title and Created At */}
-      <div className="space-y-1 mb-4">
+      <div className="space-y-1 mb-6">
         <h1 className="text-2xl sm:text-3xl font-semibold break-words">
           {url?.title}
         </h1>
@@ -79,31 +80,32 @@ const Link = () => {
           {new Date(url?.created_at).toLocaleString()}
         </span>
       </div>
-      <div className="grid grid-cols-1 gap-4">
-        <div className="bg-[#1a1d24] border border-[#1f1f22] p-6 rounded-xl text-white grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <div className="grid grid-cols-1 gap-6">
+        <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Side: Short + Original URLs */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Short URL Box */}
-            <div className="bg-[#11141b] p-5 rounded-lg border border-[#2a2d33] shadow-sm">
-              <h3 className="text-sm text-gray-400 mb-2">Short URL</h3>
+            <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 shadow-sm">
+              <h3 className="text-sm text-gray-500 mb-2">Short URL</h3>
               <a
                 href={`${locationOrigin}/${url?.custom_url}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xl sm:text-2xl font-semibold  break-all transition-all"
+                className="text-xl sm:text-2xl font-semibold break-all text-black transition-all hover:text-blue-600"
               >
                 {`${locationOrigin}/${link}`}
               </a>
             </div>
 
             {/* Original URL Box */}
-            <div className="bg-[#11141b] p-5 rounded-lg border border-[#2a2d33] shadow-sm">
-              <h3 className="text-sm text-gray-400 mb-2">Original URL</h3>
+            <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 shadow-sm">
+              <h3 className="text-sm text-gray-500 mb-2">Original URL</h3>
               <a
                 href={url?.original_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2 text-white  break-words"
+                className="flex items-start gap-2 text-black break-words hover:text-blue-600"
               >
                 <LinkIcon className="w-4 h-4 mt-1 text-gray-400" />
                 <span className="break-all">{url?.original_url}</span>
@@ -116,16 +118,16 @@ const Link = () => {
             <img
               src={url?.qr}
               alt="QR Code"
-              className="w-full max-w-[220px] rounded-md p-2 object-contain"
+              className="w-full max-w-[220px] rounded-md p-2 object-contain border border-gray-200 shadow-sm"
             />
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-500">
               Scan this QR to access
             </span>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-2">
               <Button
                 onClick={downloadImage}
-                className="bg-[#1a1d24] border border-[#1f1f22] text-white flex items-center gap-2"
+                className="bg-gray-50 border border-gray-200 text-black flex items-center gap-2 rounded-md hover:bg-gray-100"
               >
                 <Download className="w-4 h-4" />
                 Download
@@ -139,7 +141,7 @@ const Link = () => {
                   })
                 }
                 disabled={loadingDelete}
-                className="bg-[#1a1d24] border border-[#1f1f22] flex items-center gap-2"
+                className="bg-gray-50 border border-gray-200 text-black flex items-center gap-2 rounded-md hover:bg-gray-100"
               >
                 {loadingDelete ? (
                   <BeatLoader size={6} color="#f87171" />
@@ -154,20 +156,21 @@ const Link = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-9xl mx-auto py-4">
-        <Card className="bg-[#1a1d24] border border-[#1f1f22] rounded-xl shadow-sm">
+
+      <div className="max-w-9xl mx-auto py-6">
+        <Card className="bg-white border border-gray-200 rounded-xl shadow-sm">
           <CardHeader>
-            <CardTitle className="text-3xl sm:text-4xl font-semibold text-white">
+            <CardTitle className="text-3xl sm:text-4xl font-semibold text-black">
               Stats
             </CardTitle>
           </CardHeader>
 
           {stats && stats.length > 0 ? (
-            <CardContent className="flex flex-col gap-6 text-white">
+            <CardContent className="flex flex-col gap-6 text-black">
               {/* Total Clicks */}
-              <Card className="bg-[#11141b] border border-[#2a2d33]">
+              <Card className="bg-gray-50 border border-gray-200 rounded-lg shadow-sm">
                 <CardHeader>
-                  <CardTitle className="text-lg text-gray-400">
+                  <CardTitle className="text-lg text-gray-500">
                     Total Clicks
                   </CardTitle>
                 </CardHeader>
@@ -179,13 +182,13 @@ const Link = () => {
               {/* Charts Side-by-Side */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                  <CardTitle className="text-lg text-gray-400 mb-2">
+                  <CardTitle className="text-lg text-gray-500 mb-2">
                     Location Data
                   </CardTitle>
                   <LocationStats stats={stats} />
                 </div>
                 <div>
-                  <CardTitle className="text-lg text-gray-400 mb-2">
+                  <CardTitle className="text-lg text-gray-500 mb-2">
                     Device Info
                   </CardTitle>
                   <Device stats={stats} />
@@ -193,7 +196,7 @@ const Link = () => {
               </div>
             </CardContent>
           ) : (
-            <CardContent className="text-gray-400">
+            <CardContent className="text-gray-500">
               {loadingStats === false
                 ? "No statistics yet"
                 : "Loading Statistics..."}

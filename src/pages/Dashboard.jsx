@@ -49,32 +49,32 @@ const Dashboard = () => {
       <div className="hidden lg:block">
         <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           {(loading || loadingClicks) && (
-            <BarLoader width={"100%"} color="#36d7b7" />
+            <BarLoader className="mb-4" width="100%" color="#111" height={4} />
           )}
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <Card className="rounded-xl bg-[#1a1d24] border border-[#1f1f22]">
+            <Card className="rounded-xl bg-white border border-gray-200 shadow-sm p-4">
               <CardHeader>
-                <CardTitle className="text-base sm:text-lg md:text-xl">
+                <CardTitle className="text-base sm:text-lg md:text-xl text-black">
                   Links Created
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-xl sm:text-2xl font-semibold">
+                <p className="text-xl sm:text-2xl font-semibold text-black">
                   {urls?.length}
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="rounded-xl bg-[#1a1d24] border border-[#1f1f22]">
+            <Card className="rounded-xl bg-white border border-gray-200 shadow-sm p-4">
               <CardHeader>
-                <CardTitle className="text-base sm:text-lg md:text-xl">
+                <CardTitle className="text-base sm:text-lg md:text-xl text-black">
                   Total Clicks
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-xl sm:text-2xl font-semibold">
+                <p className="text-xl sm:text-2xl font-semibold text-black">
                   {clicks?.length}
                 </p>
               </CardContent>
@@ -83,7 +83,7 @@ const Dashboard = () => {
 
           {/* Heading + CreateLink */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-6">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-black tracking-tight leading-snug">
               My Links
             </h1>
             <div className="w-full sm:w-auto">
@@ -98,7 +98,7 @@ const Dashboard = () => {
               placeholder="Filter links"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-[#13181f] border border-[#282c34] w-full pl-4 pr-12 py-2 sm:py-3 text-sm sm:text-base  focus:border-gray-400 focus:ring-blue-500 focus:outline-none rounded-md px-4 text-white"
+              className="w-full bg-gray-50 border border-gray-300 rounded-md py-2 sm:py-3 pl-4 pr-12 text-sm sm:text-base text-black focus:outline-none focus:ring-2 focus:ring-gray-700"
             />
             <Filter className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500" />
           </div>
@@ -114,35 +114,37 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile & Small Screens */}
       <div className="block lg:hidden">
-        <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-8 px-4 sm:px-6 max-w-6xl mx-auto">
           {(loading || loadingClicks) && (
-            <BarLoader width={"100%"} color="#36d7b7" />
+            <BarLoader className="mb-4" width="100%" color="#111" height={4} />
           )}
 
           {/* Stats Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <Card className="bg-[#1a1d24] border border-[#282c34] shadow-sm rounded-xl p-4">
+            <Card className="bg-white border border-gray-200 shadow-sm rounded-xl p-4">
               <CardHeader>
-                <CardTitle className="text-base sm:text-lg text-gray-300 mb-2">
+                <CardTitle className="text-base sm:text-lg text-black mb-2">
                   Links Created
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-2xl sm:text-3xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl font-bold text-black">
                   {urls?.length}
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-[#1a1d24] border border-[#282c34] shadow-sm rounded-xl p-4">
+            <Card className="bg-white border border-gray-200 shadow-sm rounded-xl p-4">
               <CardHeader>
-                <CardTitle className="text-base sm:text-lg text-gray-300 mb-2">
+                <CardTitle className="text-base sm:text-lg text-black mb-2">
                   Total Clicks
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-2xl sm:text-3xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl font-bold text-black">
                   {clicks?.length}
                 </p>
               </CardContent>
@@ -151,7 +153,7 @@ const Dashboard = () => {
 
           {/* Header + Create Button */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+            <h1 className="text-2xl sm:text-3xl font-semibold text-black">
               My Links
             </h1>
             <div className="w-full sm:w-auto">
@@ -166,9 +168,9 @@ const Dashboard = () => {
               placeholder="Filter links..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#13181f] border border-[#282c34] rounded-xl py-2 pl-4 pr-12 text-sm sm:text-base text-white"
+              className="w-full bg-gray-50 border border-gray-300 rounded-md py-2 pl-4 pr-12 text-sm sm:text-base text-black focus:outline-none focus:ring-2 focus:ring-gray-700"
             />
-            <Filter className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400" />
+            <Filter className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500" />
           </div>
 
           {/* Error Display */}

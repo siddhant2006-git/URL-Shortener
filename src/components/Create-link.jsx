@@ -123,22 +123,27 @@ const CreateLink = () => {
       }}
     >
       <DialogTrigger asChild>
-        <Button className="bg-red-600">Create New Link</Button>
+        <Button className="bg-black hover:bg-black/80 text-white font-medium">
+          Create New Link
+        </Button>
       </DialogTrigger>
-      <DialogContent className="bg-gray-950 sm:max-w-md">
+
+      <DialogContent className="bg-gray-50 text-black max-w-xs sm:max-w-md rounded-xl p-6 shadow-md">
         <DialogHeader>
-          <DialogTitle className="font-bold text-2xl mb-6">
+          <DialogTitle className="font-thin text-2xl mb-6">
             Create New URL
           </DialogTitle>
         </DialogHeader>
 
         {formValues?.longUrl && (
-          <QRCode value={formValues?.longUrl} size={250} ref={ref} />
+          <div className="flex justify-center mb-4">
+            <QRCode value={formValues?.longUrl} size={200} ref={ref} />
+          </div>
         )}
 
         <Input
           id="title"
-          className="bg-transparent mb-3"
+          className="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 bg-white text-black"
           value={formValues.title}
           placeholder="Short Link's Title"
           onChange={handleChange}
@@ -147,7 +152,7 @@ const CreateLink = () => {
 
         <Input
           id="longUrl"
-          className="bg-transparent mb-3"
+          className="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 bg-white text-black"
           value={formValues.longUrl}
           onChange={handleChange}
           placeholder="Enter your long URL"
@@ -156,23 +161,24 @@ const CreateLink = () => {
         {errors.longUrl && <Error message={errors.longUrl} />}
 
         <div className="flex items-center gap-2 mb-3">
-          <Card className="p-2">{locationOrigin}</Card>/
+          <Card className="p-2 bg-gray-200 text-black rounded-md">
+            {locationOrigin}
+          </Card>
           <Input
             id="customUrl"
             value={formValues.customUrl}
             onChange={handleChange}
-            className="bg-transparent"
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 bg-white text-black"
             placeholder="Custom Link char(6-34) (optional)"
           />
         </div>
         {error && <Error message={errors.message} />}
 
-        <DialogFooter className="sm:justify-start">
+         <DialogFooter className="sm:justify-start mt-4">
           <Button
             disabled={loading}
             onClick={createNewLink}
-            className="bg-red-600"
-            type="submit"
+            className="bg-black hover:bg-black/80 text-white w-full sm:w-auto px-6 py-2 rounded-md "
           >
             {loading ? <BeatLoader size={10} color="white" /> : "Create"}
           </Button>

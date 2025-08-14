@@ -10,9 +10,9 @@ const AppLayout = () => {
         <Outlet />
       </main>
 
-      <footer className="w-full mt-10 p-4 md:p-6 text-center border border-[#1f1f22]">
-        <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg tracking-wide">
-          Made with <span className="text-pink-500">💗</span> by Kartikey
+      <footer className="w-full mt-10 p-4 md:p-6 text-center border border-gray-200 bg-gray-50 rounded-t-lg">
+        <p className="text-gray-600 text-sm sm:text-base md:text-base lg:text-lg tracking-wide">
+          Made with <span className="text-pink-500">❤️</span> by Kartikey
         </p>
       </footer>
     </div>

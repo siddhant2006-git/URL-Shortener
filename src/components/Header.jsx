@@ -30,12 +30,11 @@ const Header = () => {
     <div className="w-full">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img
-            src="/img1.png"
-            className="h-14 sm:h-16 lg:h-18"
-            alt="Trimmer Logo"
-          />
+        <Link
+          to="/"
+          className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-black hover:text-gray-700"
+        >
+          ShortenX
         </Link>
 
         {/* Right Side */}
@@ -43,7 +42,7 @@ const Header = () => {
           {!user ? (
             <Button
               onClick={() => navigate("/auth")}
-              className="text-sm sm:text-base"
+              className="text-sm sm:text-base bg-black text-white hover:bg-gray-900"
             >
               Login
             </Button>
@@ -59,7 +58,7 @@ const Header = () => {
                 </Avatar>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="bg-[#11141b] border border-[#2a2d33]  text-sm sm:text-base">
+              <DropdownMenuContent className="bg-gray-50 border border-gray-200 text-black text-sm sm:text-base">
                 <DropdownMenuLabel>
                   {user?.user_metadata?.name}
                 </DropdownMenuLabel>
@@ -76,7 +75,7 @@ const Header = () => {
                 {/* Logout */}
                 <DropdownMenuItem
                   onClick={handleLogout}
-                  className="text-red-400 cursor-pointer flex items-center"
+                  className="text-red-500 cursor-pointer flex items-center"
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   Logout

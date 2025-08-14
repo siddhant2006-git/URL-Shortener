@@ -22,8 +22,10 @@ export default function LocationStats({ stats = [] }) {
   }));
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-[#11141b] border border-[#2a2d33] p-6 rounded-xl shadow-sm text-white">
-      <h2 className="text-xl font-semibold mb-4 text-center">Top Locations</h2>
+    <div className="w-full max-w-3xl mx-auto text-black p-6 rounded-xl shadow-md bg-gray-50 border border-gray-200">
+      <h2 className="text-xl sm:text-2xl font-thin mb-6 text-center">
+        Top Locations
+      </h2>
 
       {cities.length > 0 ? (
         <div className="w-full h-[300px]">
@@ -32,21 +34,28 @@ export default function LocationStats({ stats = [] }) {
               data={cities.slice(0, 5)}
               margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
             >
-              <XAxis dataKey="city" tick={{ fill: "#cbd5e1", fontSize: 12 }} />
-              <YAxis tick={{ fill: "#cbd5e1", fontSize: 12 }} />
+              <XAxis
+                dataKey="city"
+                tick={{ fill: "#4b5563", fontSize: 12 }}
+                interval={0}
+                angle={-20}
+                textAnchor="end"
+              />
+              <YAxis tick={{ fill: "#4b5563", fontSize: 12 }} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#1f1f22",
-                  border: "none",
+                  backgroundColor: "#f9f9f9",
+                  border: "1px solid #ddd",
                   borderRadius: "0.5rem",
+                  color: "#000",
                 }}
-                labelStyle={{ color: "#ffffff" }}
+                labelStyle={{ color: "#000" }}
                 itemStyle={{ color: "#00C49F" }}
               />
               <Legend
                 verticalAlign="top"
                 height={36}
-                wrapperStyle={{ color: "#cbd5e1", fontSize: "0.875rem" }}
+                wrapperStyle={{ color: "#6b7280", fontSize: "0.875rem" }}
               />
               <Line
                 type="monotone"
@@ -59,7 +68,11 @@ export default function LocationStats({ stats = [] }) {
           </ResponsiveContainer>
         </div>
       ) : (
-        <p className="text-center text-gray-400">No location data available.</p>
+        <div className="flex flex-col items-center justify-center gap-2 py-20">
+          <p className="text-gray-500 text-center">
+            No location data available.
+          </p>
+        </div>
       )}
     </div>
   );

@@ -28,28 +28,30 @@ const LinkCard = ({ url, fetchUrls }) => {
     <>
       <div className="hidden lg:block">
         <div className="w-full max-w-[1600px] mt-10 mx-auto">
-          <div className="overflow-x-auto  bg-[#1a1d24] border border-[#1f1f22] rounded-xl hide-scrollbar">
-            <table className="min-w-full text-left text-sm text-white">
-              <thead className="text-gray-400 border-b border-gray-700 hidden sm:table-header-group">
+          <div className="overflow-x-auto bg-gray-50 border border-gray-200 rounded-lg hide-scrollbar shadow-sm">
+            <table className="min-w-full text-left text-sm text-black">
+              <thead className="font-thin border-b border-gray-300 hidden sm:table-header-group">
                 <tr>
-                  <th className="px-6 py-4">Title</th>
-                  <th className="px-6 py-4">Original URL</th>
-                  <th className="px-6 py-4">Short URL</th>
-                  <th className="px-6 py-4">QR Code</th>
+                  <th className="px-6 py-3 text-left">Title</th>
+                  <th className="px-6 py-3 text-left">Original URL</th>
+                  <th className="px-6 py-3 text-left">Short URL</th>
+                  <th className="px-6 py-3 text-left">QR Code</th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-800 ">
-                <tr>
-                  <td className="px-6 py-4 text-lg md:text-2xl font-semibold whitespace-nowrap">
-                    <Link to={`/link/${url?.id}`}>{url?.title}</Link>
+              <tbody className="divide-y divide-gray-200">
+                <tr className="hover:bg-gray-100 transition">
+                  <td className="px-6 py-4 text-lg md:text-2xl font-thin whitespace-nowrap">
+                    <Link to={`/link/${url?.id}`} className="hover:underline">
+                      {url?.title}
+                    </Link>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-blue-300 text-base cursor-pointer break-all">
+                  <td className="px-6 py-4  text-base break-all cursor-pointer hover:underline">
                     <Link to={`/link/${url?.id}`}>{url?.original_url}</Link>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-blue-300 text-base break-all">
+                  <td className="px-6 py-4  text-base break-all hover:underline">
                     <Link to={`/link/${url?.id}`}>
                       {`${locationOrigin}/${url?.custom_url || url?.short_url}`}
                     </Link>
@@ -59,7 +61,7 @@ const LinkCard = ({ url, fetchUrls }) => {
                     <Link to={`/link/${url?.id}`}>
                       <img
                         src={url?.qr}
-                        className="h-28 w-28 object-contain mx-auto sm:mx-0"
+                        className="h-28 w-28 object-contain mx-auto sm:mx-0 rounded-md border border-gray-300 p-1 bg-white"
                         alt="QR code"
                       />
                     </Link>
@@ -92,15 +94,15 @@ const LinkCard = ({ url, fetchUrls }) => {
                           onClick={() => fnDelete().then(() => fetchUrls())}
                         >
                           {loadingDelete ? (
-                            <BeatLoader size={5} color="white" />
+                            <BeatLoader size={5} color="black" />
                           ) : (
                             <Trash className="h-4 w-4" />
                           )}
                         </Button>
                       </div>
 
-                      <div className="text-gray-300 text-sm  mb-4 px-6 py-4 whitespace-nowrap  cursor-pointer">
-                        <span className="text-sm font-medium text-gray-400 mr-2">
+                      <div className="text-gray-500 text-sm px-6 py-2 whitespace-nowrap">
+                        <span className="font-medium text-gray-700 mr-2">
                           Date Created:
                         </span>
                         <Link to={`/link/${url?.id}`}>
@@ -116,26 +118,25 @@ const LinkCard = ({ url, fetchUrls }) => {
         </div>
       </div>
       <div className="block lg:hidden">
-        <div className="flex flex-col md:flex-row gap-5 p-4 bg-[#1a1d24] border border-[#1f1f22] rounded-lg">
+        <div className="flex flex-col md:flex-row gap-5 p-4  bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
           {/* QR Image aligned to start */}
           <div className="flex justify-start items-start">
             <img
               src={url?.qr}
-              className="h-28 w-28 object-contain"
-              alt="QR code"
+              className="h-28 w-28 object-contain rounded-md border border-gray-300 p-1 bg-white"
             />
           </div>
 
           {/* URL Details */}
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-col flex-1 gap-1 text-black">
             <Link
               to={`/link/${url?.id}`}
-              className="text-lg md:text-2xl font-semibold whitespace-nowrap hover:underline"
+              className="text-lg md:text-2xl font-thin hover:underline break-words"
             >
               {url?.title || "Untitled"}
             </Link>
 
-            <span className="text-blue-300 break-words">
+            <span className="break-words text-sm hover:underline mb-4">
               https://trimrr.in/{url?.custom_url || url?.short_url}
             </span>
 
@@ -143,12 +144,12 @@ const LinkCard = ({ url, fetchUrls }) => {
               href={url?.original_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 hover:underline text-sm mt-1 break-words"
+              className="text-sm hover:underline break-words break-all word-break-anywhere mb-4"
             >
               <span className="break-all">{url?.original_url}</span>
             </a>
 
-            <span className="mt-2 text-sm text-gray-400">
+            <span className="text-sm text-gray-500">
               {url?.created_at
                 ? new Date(url.created_at).toLocaleString()
                 : "N/A"}
@@ -156,7 +157,7 @@ const LinkCard = ({ url, fetchUrls }) => {
           </div>
 
           {/* Actions */}
-          <div className="flex gap-2 items-start">
+          <div className="flex gap-2 mt-2">
             <Button
               variant="ghost"
               onClick={() =>
@@ -178,7 +179,7 @@ const LinkCard = ({ url, fetchUrls }) => {
               disabled={loadingDelete}
             >
               {loadingDelete ? (
-                <BeatLoader size={5} color="white" />
+                <BeatLoader size={5} color="black" />
               ) : (
                 <Trash />
               )}

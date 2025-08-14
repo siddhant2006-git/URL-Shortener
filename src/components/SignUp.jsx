@@ -101,21 +101,21 @@ const SignUp = () => {
   };
 
   return (
-    <Card className="mt-8 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto p-4 sm:p-6 lg:p-8">
+    <Card className="mt-8 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto p-6 sm:p-8 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
       <CardHeader>
-        <CardTitle className="text-base sm:text-xl lg:text-2xl break-words">
+        <CardTitle className="text-base sm:text-xl lg:text-2xl font-thin text-black break-words">
           Signup
         </CardTitle>
-        <CardDescription className="text-xs sm:text-sm lg:text-base break-words">
-          Create a new account if you haven&rsquo;t already
+        <CardDescription className="text-xs sm:text-sm lg:text-base text-gray-600 break-words">
+          Create a new account if you haven’t already
         </CardDescription>
         {error && <Error message={error.message} />}
       </CardHeader>
 
-      <CardContent className="space-y-2 ">
-        <div className="space-y-1 mb-5">
+      <CardContent className="space-y-4 ">
+        <div className="space-y-1">
           <Input
-            className="bg-transparent"
+            className="w-full px-4 py-3 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
             name="name"
             type="text"
             placeholder="Enter Name"
@@ -126,7 +126,7 @@ const SignUp = () => {
 
         <div className="space-y-1 mb-5">
           <Input
-            className="bg-transparent"
+            className="w-full px-4 py-3 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
             name="email"
             type="email"
             placeholder="Enter email"
@@ -137,7 +137,7 @@ const SignUp = () => {
 
         <div className="space-y-1">
           <Input
-            className="bg-transparent"
+            className="w-full px-4 py-3 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
             name="password"
             type="password"
             placeholder="Enter Password"
@@ -148,7 +148,7 @@ const SignUp = () => {
 
         <div className="space-y-1">
           <Input
-            className=""
+            className="w-full text-black bg-white"
             name="profile_pic"
             type="file"
             accept="image/*"
@@ -157,8 +157,12 @@ const SignUp = () => {
           {errors.profile_pic && <Error message={errors.profile_pic} />}
         </div>
       </CardContent>
+
       <CardFooter className="">
-        <Button className="border-2" onClick={handleSignUp}>
+        <Button
+          className="w-full py-3 bg-black text-white font-thin rounded-md hover:bg-gray-900 transition"
+          onClick={handleSignUp}
+        >
           {loading ? (
             <BeatLoader size={10} color="#00eeff" />
           ) : (

@@ -75,13 +75,6 @@
 } */
 
 
-@layer base{
-  :root{
-    background-color: #13181f;
-    color: white;
-  }
-}
-
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }

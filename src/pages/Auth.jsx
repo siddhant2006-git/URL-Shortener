@@ -21,33 +21,33 @@ const Auth = () => {
   }, [isAuthenticated, loading, navigate]);
 
   return (
-    <div className="mt-20 flex flex-col items-center ml-10 gap-10">
-      <h1 className="text-3xl md:text-5xl font-semibold">
+    <div className="mt-20 flex flex-col items-center gap-10 px-4 sm:px-0">
+      <h1 className="text-3xl md:text-5xl font-thin text-black text-center">
         {searchParams.get("createNew")
           ? "Hold up! Let's Login first..."
           : "Login / Signup"}
         {/* searchParams.get() Returns the first value associated to the given search parameter. */}
       </h1>
 
-      <Tabs defaultValue="login" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-2 gap-2">
+      <Tabs defaultValue="login" className="w-full max-w-[400px]">
+        <TabsList className="grid w-full grid-cols-2 gap-2 border-b border-gray-300">
           <TabsTrigger
-            className=" p-2 ml-6 border-gray-500 border-b-2 border-l-2 border-t-2 border-spacing-11 border-r-2 hover:bg-gray-800  transition ease-linear"
+            className="p-2 text-black font-thin text-center hover:bg-gray-100 transition rounded-t"
             value="login"
           >
             Login
           </TabsTrigger>
           <TabsTrigger
-            className="p-2 mr-6 border-b-2 border-gray-500 border-r-2 border-t-2 border-l-2 border-spacing-11 hover:bg-gray-800"
+            className="p-2 text-black font-thin text-center hover:bg-gray-100 transition rounded-t"
             value="signup"
           >
             SignUp
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="login">
+        <TabsContent value="login" className="w-full mt-4">
           <Login />
         </TabsContent>
-        <TabsContent value="signup">
+        <TabsContent value="signup" className="w-full mt-4">
           <SignUp />
         </TabsContent>
       </Tabs>

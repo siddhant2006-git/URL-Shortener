@@ -73,24 +73,25 @@ const Login = () => {
   };
 
   return (
-    <Card className="mt-8 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto p-4 sm:p-6 lg:p-8">
+    <Card className="mt-8 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto p-6 sm:p-8 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
       <CardHeader>
-        <CardTitle className="text-base sm:text-xl lg:text-2xl break-words">
+        <CardTitle className="text-base sm:text-xl lg:text-2xl font-thin text-black break-words">
           Login
         </CardTitle>
-        <CardDescription className="text-xs sm:text-sm lg:text-base break-words">
+        <CardDescription className="text-xs sm:text-sm lg:text-base text-gray-600 break-words">
           Login to your account if you already have one
         </CardDescription>
         {error && <Error message={error.message} />}
       </CardHeader>
 
       <CardContent className="space-y-4">
-        <div className="space-y-1 mb-5">
+        {/* Email */}
+        <div className="space-y-1">
           <Input
-            className="bg-transparent w-full"
+            className="w-full px-4 py-3 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
             name="email"
             type="email"
-            placeholder="Enter email"
+            placeholder="Enter Email"
             onChange={handleInputChange}
           />
           {errors.email && <Error message={errors.email} />}
@@ -98,7 +99,7 @@ const Login = () => {
 
         <div className="space-y-1">
           <Input
-            className="bg-transparent w-full"
+            className="w-full px-4 py-3 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
             name="password"
             type="password"
             placeholder="Enter Password"
@@ -108,12 +109,12 @@ const Login = () => {
         </div>
       </CardContent>
 
-      <CardFooter className="flex justify-center">
+      <CardFooter>
         <Button
-          className="border-2 w-full sm:w-auto truncate"
+          className="w-full py-3 bg-black text-white font-thin rounded-md hover:bg-gray-900 transition"
           onClick={handleLogin}
         >
-          {loading ? <BeatLoader size={10} color="#00eeff" /> : "Login"}
+          {loading ? <BeatLoader size={10} color="#fff" /> : "Login"}
         </Button>
       </CardFooter>
     </Card>
