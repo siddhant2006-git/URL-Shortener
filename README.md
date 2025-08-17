@@ -8,7 +8,7 @@ Shorten long URLs, get analytics, and manage your links through a clean dashboar
 
 ## 📌 Preview
 
-**Live Site** → [https://tiny-ur-lz.vercel.app](https://tiny-ur-lz.vercel.app)  
+**Live Site** → [https://clippyurl.vercel.app/](https://clippyurl.vercel.app/)  
 **Repo** → [https://github.com/kartikey2004-git/URL-Shortener](https://github.com/kartikey2004-git/URL-Shortener)
 
 ---
@@ -46,7 +46,7 @@ Shorten long URLs, get analytics, and manage your links through a clean dashboar
 
 | Home Page | Dashboard | Link Analytics |
 |-----------|-----------|----------------|
-| ![Home](./snapshots/home.png) | ![Dashboard](./snapshots/dashboard.png) | ![Analytics](./snapshots/link.png) |
+| ![Home](./snapshots/1.png) | ![Dashboard](./snapshots/2.png) | ![Analytics](./snapshots/3.png) |
 
 ---
 
