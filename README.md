@@ -1,19 +1,19 @@
 
-🔗 URL Shortener — Track & Manage Your Links
+# URL Shortener — Track & Manage Your Links
 
 A minimal, fast, and fully functional URL shortener built using **React**, **Supabase**, and **Vite**.  
 Shorten long URLs, get analytics, and manage your links through a clean dashboard — all in one place.
 
 ---
 
-## 📌 Preview
+## Preview
 
 **Live Site** → [https://clippyurl.vercel.app/](https://clippyurl.vercel.app/)  
 **Repo** → [https://github.com/kartikey2004-git/URL-Shortener](https://github.com/kartikey2004-git/URL-Shortener)
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 | Layer       | Tools Used                               |
 |-------------|----------------------------------        |
@@ -23,7 +23,7 @@ Shorten long URLs, get analytics, and manage your links through a clean dashboar
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - 🔗 **Instant URL Shortening**  
   Cleanly shorten long and messy URLs to compact links.
@@ -40,17 +40,9 @@ Shorten long URLs, get analytics, and manage your links through a clean dashboar
 - 📱 **Responsive Design**  
   Fully functional across mobile, tablet, and desktop.
 
----
 
-##  Snapshots
 
-| Home Page | Dashboard | Link Analytics |
-|-----------|-----------|----------------|
-| ![Home](./snapshots/1.png) | ![Dashboard](./snapshots/2.png) | ![Analytics](./snapshots/3.png) |
-
----
-
-## 🧠 Project Overview
+## Project Overview
 
 The project follows a frontend-first architecture with Supabase acting as the backend for authentication, real-time database handling, and analytics.
 
@@ -67,7 +59,7 @@ The project follows a frontend-first architecture with Supabase acting as the ba
 
 ---
 
-## 🚀 Getting Started Locally
+## Getting Started Locally
 
 ### Clone the repo:
 ```bash
@@ -98,25 +90,64 @@ npm run dev
 🗂️ Folder Structure
 ```php
 
-url-shortener/
-├── src/
-│   ├── components/        # UI components
-│   ├── pages/             # Main views (Home, Dashboard)
-│   ├── services/          # Supabase client + API functions
-│   ├── utils/             # Helper functions
-│   └── App.jsx            # App entry point with routing
-└── public/
-    └── snapshots/         # Project snapshots
+SHORTENX
+├── .git
+├── dist
+├── node_modules
+├── public
+├── src
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   └── ui
+│   │       ├── Create-link.jsx
+│   │       ├── Device-stats.jsx
+│   │       ├── Error.jsx
+│   │       ├── Header.jsx
+│   │       ├── Link-card.jsx
+│   │       ├── Location-stats.jsx
+│   │       ├── Login.jsx
+│   │       ├── Require-auth.jsx
+│   │       └── SignUp.jsx
+│   ├── db
+│   │   ├── apiAuth.js
+│   │   ├── apiClicks.js
+│   │   ├── apiUrls.js
+│   │   └── supabase.js
+│   ├── hooks
+│   │   └── Use-fetch.jsx
+│   ├── layouts
+│   │   └── App.layout.jsx
+│   ├── lib
+│   │   └── utils.js
+│   ├── pages
+│   │   ├── Auth.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── LandingPage.jsx
+│   │   ├── Link.jsx
+│   │   └── RedirectLinkPage.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── Context.jsx
+│   ├── index.css
+│   ├── main.jsx
+├──.env
+├──.gitignore
+├──.htaccess
+├──component.json
+├──eslint.config.js
+├──index.html
+├──jsconfig.json
+├──package-lock.json
+├──package.json
+├──postcss.config.js
+├──README.md
+├──tailwind.config.js
+├──vercel.json
+├──vite.config.js
+
 ```
 
-
-**Features**
-
- - Add custom slugs for shortened links
-
- - Add QR code generation
-
- - Better analytics visualization (charts)
 ---
 
 ## License: This project is open-source. Feel free to explore, use, and contribute!
