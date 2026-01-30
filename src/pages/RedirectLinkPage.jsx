@@ -31,7 +31,7 @@ const RedirectLinkPage = () => {
   if (loading || loadingStats) {
     return (
       <>
-        <BarLoader width={"100%"} color="#36d7b7" />
+        <BarLoader width={"100%"} color="#000000" />
         <br />
         Redirecting...
       </>

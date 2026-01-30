@@ -73,22 +73,22 @@ const Login = () => {
   };
 
   return (
-    <Card className="mt-8 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto p-6 sm:p-8 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
-      <CardHeader>
-        <CardTitle className="text-base sm:text-xl lg:text-2xl font-thin text-black break-words">
+    <Card className="mt-8 lg:mt-12 w-full max-w-sm lg:max-w-md mx-auto p-6 lg:p-8 bg-background border border-border rounded-xl shadow-sm font-sans">
+      <CardHeader className="space-y-3">
+        <CardTitle className="text-xl lg:text-2xl font-semibold text-foreground break-words leading-tight">
           Login
         </CardTitle>
-        <CardDescription className="text-xs sm:text-sm lg:text-base text-gray-600 break-words">
+        <CardDescription className="text-sm lg:text-base text-muted-foreground break-words leading-relaxed">
           Login to your account if you already have one
         </CardDescription>
         {error && <Error message={error.message} />}
       </CardHeader>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6">
         {/* Email */}
-        <div className="space-y-1">
+        <div className="space-y-2">
           <Input
-            className="w-full px-4 py-3 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
+            className="w-full px-4 py-3 lg:py-4 text-foreground bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-base lg:text-lg placeholder:text-muted-foreground"
             name="email"
             type="email"
             placeholder="Enter Email"
@@ -97,9 +97,9 @@ const Login = () => {
           {errors.email && <Error message={errors.email} />}
         </div>
 
-        <div className="space-y-1">
+        <div className="space-y-2">
           <Input
-            className="w-full px-4 py-3 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
+            className="w-full px-4 py-3 lg:py-4 text-foreground bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-base lg:text-lg placeholder:text-muted-foreground"
             name="password"
             type="password"
             placeholder="Enter Password"
@@ -109,12 +109,12 @@ const Login = () => {
         </div>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="pt-6">
         <Button
-          className="w-full py-3 bg-black text-white font-thin rounded-md hover:bg-gray-900 transition"
+          className="w-full py-3 lg:py-4 bg-foreground text-background font-medium rounded-lg hover:bg-foreground/90 transition-all duration-200 shadow-sm hover:shadow-md text-base lg:text-lg"
           onClick={handleLogin}
         >
-          {loading ? <BeatLoader size={10} color="#fff" /> : "Login"}
+          {loading ? <BeatLoader size={10} color="#ffffff" /> : "Login"}
         </Button>
       </CardFooter>
     </Card>

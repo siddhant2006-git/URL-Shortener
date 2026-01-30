@@ -22,29 +22,29 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center px-4 sm:px-8 lg:px-16 xl:px-32 max-w-screen-xl mx-auto">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-black py-6 text-center leading-tight">
+    <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto font-sans">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground py-6 lg:py-8 text-center leading-tight tracking-tight text-balance">
         Shorten. Share. Track.
       </h1>
 
-      <h2 className="text-sm sm:text-base md:text-lg text-gray-700 text-center mb-10 sm:mb-12 px-4 max-w-md sm:max-w-2xl">
+      <h2 className="text-base sm:text-lg lg:text-xl text-muted-foreground text-center mb-8 lg:mb-12 px-4 max-w-2xl lg:max-w-4xl leading-relaxed text-pretty">
         Create short links, QR codes, and analyze your traffic — all in one
         place.
       </h2>
 
       <form
         onSubmit={handleShorten}
-        className="w-full flex flex-col sm:flex-row gap-3 items-center justify-center mb-12 sm:mb-16 max-w-3xl px-2"
+        className="w-full flex flex-col sm:flex-row gap-4 items-center justify-center mb-12 lg:mb-16 max-w-4xl px-4"
       >
         <Input
           type="url"
           value={longUrl}
           placeholder="Enter your long URL"
           onChange={(e) => setLongUrl(e.target.value)}
-          className="w-full sm:flex-1 py-3 px-4 bg-white text-black text-sm sm:text-base border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-gray-600 focus:outline-none"
+          className="w-full sm:flex-1 py-4 px-5 bg-background text-foreground text-base lg:text-lg border border-border rounded-lg shadow-sm focus:ring-2 focus:ring-ring focus:outline-none transition-all duration-200 placeholder:text-muted-foreground"
         />
         <Button
-          className="w-full sm:w-auto h-10 bg-black text-white font-semibold rounded-md hover:bg-gray-900 transition-colors"
+          className="w-full sm:w-auto h-12 lg:h-14 bg-foreground text-background font-medium rounded-lg hover:bg-foreground/90 transition-all duration-200 shadow-sm hover:shadow-md text-base lg:text-lg px-6 lg:px-8"
           type="submit"
           variant="destructive"
         >
@@ -53,7 +53,7 @@ const LandingPage = () => {
       </form>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center items-stretch mb-16 px-2 w-full max-w-6xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 justify-center items-stretch mb-16 lg:mb-20 px-4 w-full max-w-7xl">
         {[
           {
             icon: <FiLink size={36} />,
@@ -73,11 +73,11 @@ const LandingPage = () => {
         ].map(({ icon, title, text }, idx) => (
           <div
             key={idx}
-            className="border border-gray-200 bg-white rounded-xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+            className="card-base border border-border bg-background rounded-xl p-6 lg:p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
           >
-            <div className="text-black mb-3">{icon}</div>
-            <h3 className="text-black font-semibold text-lg mb-1">{title}</h3>
-            <p className="text-gray-700 text-sm leading-relaxed">{text}</p>
+            <div className="text-foreground mb-4">{icon}</div>
+            <h3 className="text-foreground font-medium text-xl lg:text-2xl mb-3 leading-tight">{title}</h3>
+            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed whitespace-pre-line">{text}</p>
           </div>
         ))}
       </div>
@@ -85,23 +85,23 @@ const LandingPage = () => {
       {/* FAQ Section */}
 
       <div className="w-full mb-16">
-        <h2 className="text-black text-2xl sm:text-3xl font-semibold mb-6 text-center">
+        <h2 className="text-foreground text-3xl lg:text-4xl font-medium mb-8 lg:mb-10 text-center">
           FAQ&apos;s
         </h2>
 
         <Accordion
           type="multiple"
           collapsible
-          className="w-full px-2 sm:px-4 text-sm sm:text-base"
+          className="w-full px-4 lg:px-6 text-base lg:text-lg"
         >
           <AccordionItem
-            className="py-2 mb-4 border border-gray-200 rounded-xl bg-white shadow-sm"
+            className="py-2 mb-4 border border-border bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow"
             value="item-1"
           >
-            <AccordionTrigger className="ml-4 text-black font-medium">
+            <AccordionTrigger className="ml-4 text-foreground font-medium text-base lg:text-lg hover:text-secondary-foreground transition-colors">
               How URL shortener works?
             </AccordionTrigger>
-            <AccordionContent className="ml-4 text-gray-700">
+            <AccordionContent className="ml-4 text-muted-foreground text-base lg:text-lg leading-relaxed">
               When you enter a long URL, our system generates a shorter version
               of it. This shortened URL will redirect to the original long URL
               when accessed.
@@ -109,27 +109,27 @@ const LandingPage = () => {
           </AccordionItem>
 
           <AccordionItem
-            className="py-2 mb-4 border border-gray-200 rounded-xl bg-white shadow-sm"
+            className="py-2 mb-4 border border-border bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow"
             value="item-2"
           >
-            <AccordionTrigger className="ml-4 text-black font-medium">
+            <AccordionTrigger className="ml-4 text-foreground font-medium text-base lg:text-lg hover:text-secondary-foreground transition-colors">
               Is it free to use?
             </AccordionTrigger>
-            <AccordionContent className="ml-4 text-gray-700">
+            <AccordionContent className="ml-4 text-muted-foreground text-base lg:text-lg leading-relaxed">
               Yes, it is completely free to use. You only need to sign up if you
-              don’t have an account, or simply log in with your existing
+              don&apos;t have an account, or simply log in with your existing
               account.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem
             value="item-3"
-            className="py-2 mb-4 border border-gray-200 rounded-xl bg-white shadow-sm"
+            className="py-2 mb-4 border border-border bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow"
           >
-            <AccordionTrigger className="ml-4 text-black font-medium">
+            <AccordionTrigger className="ml-4 text-foreground font-medium text-base lg:text-lg hover:text-secondary-foreground transition-colors">
               Do I have to create an account to use?
             </AccordionTrigger>
-            <AccordionContent className="ml-4 text-gray-700">
+            <AccordionContent className="ml-4 text-muted-foreground text-base lg:text-lg leading-relaxed">
               Yes, creating an account lets you manage your URLs, view
               analytics, and customize your shortened links.
             </AccordionContent>

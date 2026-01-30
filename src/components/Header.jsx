@@ -28,11 +28,11 @@ const Header = () => {
 
   return (
     <div className="w-full">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6 flex justify-between items-center font-sans">
         {/* Logo */}
         <Link
           to="/"
-          className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-black hover:text-gray-700"
+          className="text-2xl lg:text-3xl xl:text-4xl font-semibold text-black hover:text-dark-gray transition-colors"
         >
           ShortenX
         </Link>
@@ -42,7 +42,7 @@ const Header = () => {
           {!user ? (
             <Button
               onClick={() => navigate("/auth")}
-              className="text-sm sm:text-base bg-black text-white hover:bg-gray-900"
+              className="text-base lg:text-lg bg-black text-white hover:bg-near-black px-4 lg:px-6 py-2 lg:py-3 rounded-lg transition-colors font-medium"
             >
               Login
             </Button>
@@ -58,16 +58,16 @@ const Header = () => {
                 </Avatar>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="bg-gray-50 border border-gray-200 text-black text-sm sm:text-base">
-                <DropdownMenuLabel>
+              <DropdownMenuContent className="bg-off-white border border-light-gray text-black text-base lg:text-lg rounded-lg shadow-sm px-4 py-2">
+                <DropdownMenuLabel className="font-semibold text-base lg:text-lg">
                   {user?.user_metadata?.name}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
 
                 {/* My Links */}
                 <DropdownMenuItem asChild>
-                  <Link to="/dashboard" className="flex items-center">
-                    <LinkIcon className="mr-2 h-4 w-4" />
+                  <Link to="/dashboard" className="flex items-center text-base lg:text-lg py-2 px-3 hover:bg-off-white rounded-md transition-colors">
+                    <LinkIcon className="mr-3 h-4 w-4" />
                     My Links
                   </Link>
                 </DropdownMenuItem>
@@ -75,9 +75,9 @@ const Header = () => {
                 {/* Logout */}
                 <DropdownMenuItem
                   onClick={handleLogout}
-                  className="text-red-500 cursor-pointer flex items-center"
+                  className="text-black cursor-pointer flex items-center hover:bg-off-white py-2 px-3 rounded-md transition-colors text-base lg:text-lg"
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
+                  <LogOut className="mr-3 h-4 w-4" />
                   Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -89,7 +89,7 @@ const Header = () => {
       {/* Optional loading bar */}
       {loading && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BarLoader className="w-full" color="#00eeff" />
+          <BarLoader className="w-full" color="#000000" />
         </div>
       )}
     </div>

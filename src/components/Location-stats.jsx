@@ -22,7 +22,7 @@ export default function LocationStats({ stats = [] }) {
   }));
 
   return (
-    <div className="w-full max-w-3xl mx-auto text-black p-6 rounded-xl shadow-md bg-gray-50 border border-gray-200">
+    <div className="w-full max-w-3xl mx-auto text-black p-6 rounded-xl shadow-md bg-off-white border border-light-gray">
       <h2 className="text-xl sm:text-2xl font-thin mb-6 text-center">
         Top Locations
       </h2>
@@ -36,31 +36,31 @@ export default function LocationStats({ stats = [] }) {
             >
               <XAxis
                 dataKey="city"
-                tick={{ fill: "#4b5563", fontSize: 12 }}
+                tick={{ fill: "#666666", fontSize: 12 }}
                 interval={0}
                 angle={-20}
                 textAnchor="end"
               />
-              <YAxis tick={{ fill: "#4b5563", fontSize: 12 }} />
+              <YAxis tick={{ fill: "#666666", fontSize: 12 }} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#f9f9f9",
-                  border: "1px solid #ddd",
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #e5e5e5",
                   borderRadius: "0.5rem",
                   color: "#000",
                 }}
                 labelStyle={{ color: "#000" }}
-                itemStyle={{ color: "#00C49F" }}
+                itemStyle={{ color: "#000000" }}
               />
               <Legend
                 verticalAlign="top"
                 height={36}
-                wrapperStyle={{ color: "#6b7280", fontSize: "0.875rem" }}
+                wrapperStyle={{ color: "#666666", fontSize: "0.875rem" }}
               />
               <Line
                 type="monotone"
                 dataKey="count"
-                stroke="#00C49F"
+                stroke="#000000"
                 strokeWidth={2}
                 activeDot={{ r: 6 }}
               />
@@ -69,7 +69,7 @@ export default function LocationStats({ stats = [] }) {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center gap-2 py-20">
-          <p className="text-gray-500 text-center">
+          <p className="text-medium-gray text-center">
             No location data available.
           </p>
         </div>

@@ -3,16 +3,16 @@ import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="min-h-screen flex flex-col font-sans">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
         <Header />
         {/* Body */}
         <Outlet />
       </main>
 
-      <footer className="w-full mt-10 p-4 md:p-6 text-center border border-gray-200 bg-gray-50 rounded-t-lg">
-        <p className="text-gray-600 text-sm sm:text-base md:text-base lg:text-lg tracking-wide">
-          Made with <span className="text-pink-500">❤️</span> by Kartikey
+      <footer className="w-full mt-12 lg:mt-16 p-6 lg:p-8 text-center border border-light-gray bg-off-white rounded-t-lg">
+        <p className="text-medium-gray text-base lg:text-lg tracking-wide leading-relaxed">
+          Made with <span className="text-black">❤️</span> by Kartikey
         </p>
       </footer>
     </div>

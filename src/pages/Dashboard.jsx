@@ -47,34 +47,34 @@ const Dashboard = () => {
   return (
     <>
       <div className="hidden lg:block">
-        <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto font-sans">
           {(loading || loadingClicks) && (
             <BarLoader className="mb-4" width="100%" color="#111" height={4} />
           )}
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <Card className="rounded-xl bg-white border border-gray-200 shadow-sm p-4">
-              <CardHeader>
-                <CardTitle className="text-base sm:text-lg md:text-xl text-black">
+            <Card className="rounded-xl bg-background border border-border shadow-sm p-6">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg lg:text-xl text-foreground font-medium leading-tight">
                   Links Created
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-xl sm:text-2xl font-semibold text-black">
+              <CardContent className="pt-0">
+                <p className="text-2xl lg:text-3xl font-semibold text-foreground leading-tight">
                   {urls?.length}
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="rounded-xl bg-white border border-gray-200 shadow-sm p-4">
-              <CardHeader>
-                <CardTitle className="text-base sm:text-lg md:text-xl text-black">
+            <Card className="rounded-xl bg-background border border-border shadow-sm p-6">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg lg:text-xl text-foreground font-medium leading-tight">
                   Total Clicks
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-xl sm:text-2xl font-semibold text-black">
+              <CardContent className="pt-0">
+                <p className="text-2xl lg:text-3xl font-semibold text-foreground leading-tight">
                   {clicks?.length}
                 </p>
               </CardContent>
@@ -82,8 +82,8 @@ const Dashboard = () => {
           </div>
 
           {/* Heading + CreateLink */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-6">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-black tracking-tight leading-snug">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6">
+            <h1 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight leading-tight">
               My Links
             </h1>
             <div className="w-full sm:w-auto">
@@ -98,9 +98,9 @@ const Dashboard = () => {
               placeholder="Filter links"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-gray-50 border border-gray-300 rounded-md py-2 sm:py-3 pl-4 pr-12 text-sm sm:text-base text-black focus:outline-none focus:ring-2 focus:ring-gray-700"
+              className="w-full bg-secondary border border-border rounded-lg py-3 lg:py-4 pl-4 pr-12 text-base lg:text-lg text-foreground focus:outline-none focus:ring-2 focus:ring-ring placeholder:text-muted-foreground"
             />
-            <Filter className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500" />
+            <Filter className="absolute top-1/2 right-4 transform -translate-y-1/2 text-muted-foreground" />
           </div>
 
           {/* Error Message */}
@@ -117,34 +117,34 @@ const Dashboard = () => {
 
       {/* Mobile & Small Screens */}
       <div className="block lg:hidden">
-        <div className="flex flex-col gap-8 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-8 px-4 sm:px-6 max-w-7xl mx-auto font-sans">
           {(loading || loadingClicks) && (
             <BarLoader className="mb-4" width="100%" color="#111" height={4} />
           )}
 
           {/* Stats Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <Card className="bg-white border border-gray-200 shadow-sm rounded-xl p-4">
-              <CardHeader>
-                <CardTitle className="text-base sm:text-lg text-black mb-2">
+            <Card className="bg-background border border-border shadow-sm rounded-xl p-6">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg lg:text-xl text-foreground font-medium leading-tight mb-2">
                   Links Created
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-2xl sm:text-3xl font-bold text-black">
+              <CardContent className="pt-0">
+                <p className="text-2xl lg:text-3xl font-semibold text-foreground leading-tight">
                   {urls?.length}
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border border-gray-200 shadow-sm rounded-xl p-4">
-              <CardHeader>
-                <CardTitle className="text-base sm:text-lg text-black mb-2">
+            <Card className="bg-background border border-border shadow-sm rounded-xl p-6">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg lg:text-xl text-foreground font-medium leading-tight mb-2">
                   Total Clicks
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-2xl sm:text-3xl font-bold text-black">
+              <CardContent className="pt-0">
+                <p className="text-2xl lg:text-3xl font-semibold text-foreground leading-tight">
                   {clicks?.length}
                 </p>
               </CardContent>
@@ -153,7 +153,7 @@ const Dashboard = () => {
 
           {/* Header + Create Button */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h1 className="text-2xl sm:text-3xl font-semibold text-black">
+            <h1 className="text-3xl lg:text-4xl font-medium text-foreground leading-tight">
               My Links
             </h1>
             <div className="w-full sm:w-auto">
@@ -168,9 +168,9 @@ const Dashboard = () => {
               placeholder="Filter links..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-gray-50 border border-gray-300 rounded-md py-2 pl-4 pr-12 text-sm sm:text-base text-black focus:outline-none focus:ring-2 focus:ring-gray-700"
+              className="w-full bg-secondary border border-border rounded-lg py-3 lg:py-4 pl-4 pr-12 text-base lg:text-lg text-foreground focus:outline-none focus:ring-2 focus:ring-ring placeholder:text-muted-foreground"
             />
-            <Filter className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500" />
+            <Filter className="absolute top-1/2 right-3 transform -translate-y-1/2 text-muted-foreground" />
           </div>
 
           {/* Error Display */}

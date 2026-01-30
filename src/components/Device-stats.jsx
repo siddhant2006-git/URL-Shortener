@@ -9,12 +9,12 @@ import {
 } from "recharts";
 
 const COLORS = [
-  "#0088FE",
-  "#00C49F",
-  "#FFBB28",
-  "#FF8042",
-  "#845EC2",
-  "#FF6F91",
+  "#000000",
+  "#1a1a1a",
+  "#333333",
+  "#4d4d4d",
+  "#666666",
+  "#808080",
 ];
 
 export default function Device({ stats }) {
@@ -32,7 +32,7 @@ export default function Device({ stats }) {
   const hasData = result.length > 0 && stats.length > 0;
 
   return (
-    <div className="w-full max-w-xl mx-auto bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm text-black">
+    <div className="w-full max-w-xl mx-auto bg-off-white border border-light-gray p-6 rounded-xl shadow-sm text-black">
       <h2 className="text-xl sm:text-2xl font-thin mb-6 text-center">
         Device Usage
       </h2>
@@ -60,8 +60,8 @@ export default function Device({ stats }) {
               </Pie>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#f9f9f9",
-                  border: "1px solid #ddd",
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #e5e5e5",
                   borderRadius: "0.5rem",
                   color: "#000",
                 }}
@@ -79,7 +79,7 @@ export default function Device({ stats }) {
           </ResponsiveContainer>
         </div>
       ) : (
-        <p className="text-center text-gray-500 text-sm">
+        <p className="text-center text-medium-gray text-sm">
           No device data available.
         </p>
       )}
